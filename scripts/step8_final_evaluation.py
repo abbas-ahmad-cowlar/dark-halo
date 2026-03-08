@@ -36,10 +36,41 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.preprocessing import StandardScaler
 
 try:
+    import torch
+    import torch.nn as nn
+    HAS_TORCH = True
+except ImportError:
+    HAS_TORCH = False
+
+try:
     import xgboost as xgb
     HAS_XGB = True
 except ImportError:
     HAS_XGB = False
+
+
+# ---------------------------------------------------------------------------
+# MLP model definition (must match step7)
+# ---------------------------------------------------------------------------
+if HAS_TORCH:
+    class HaloMLP(nn.Module):
+        def __init__(self, n_features: int, hidden_sizes: list[int], dropout: float):
+            super().__init__()
+            layers = []
+            prev = n_features
+            for h in hidden_sizes:
+                layers.extend([
+                    nn.Linear(prev, h),
+                    nn.BatchNorm1d(h),
+                    nn.ReLU(),
+                    nn.Dropout(dropout),
+                ])
+                prev = h
+            layers.append(nn.Linear(prev, 1))
+            self.net = nn.Sequential(*layers)
+
+        def forward(self, x: torch.Tensor) -> torch.Tensor:
+            return self.net(x).squeeze(-1)
 
 # ---------------------------------------------------------------------------
 _log_lines: list[str] = []
@@ -170,6 +201,24 @@ def combined_pred_vs_true(
         xgb_model.fit(X_train, y_train)
         predictions["XGBoost"] = xgb_model.predict(X_test)
 
+    # MLP (load saved model from step7)
+    mlp_path = Path("artifacts/step7_mlp/best_model.pt")
+    if HAS_TORCH and mlp_path.exists():
+        device = torch.device("cpu")
+        mlp_scaler = StandardScaler()
+        X_train_mlp_s = mlp_scaler.fit_transform(X_train)
+        X_test_mlp_s = mlp_scaler.transform(X_test)
+
+        mlp_model = HaloMLP(n_features=len(feat_cols), hidden_sizes=[256, 128, 64], dropout=0.1)
+        mlp_model.load_state_dict(torch.load(mlp_path, map_location=device, weights_only=True))
+        mlp_model.eval()
+        with torch.no_grad():
+            X_t = torch.tensor(X_test_mlp_s, dtype=torch.float32)
+            predictions["MLP"] = mlp_model(X_t).numpy()
+        log(f"  MLP loaded from {mlp_path}")
+    else:
+        log(f"  MLP skipped (torch={'yes' if HAS_TORCH else 'no'}, model={'exists' if mlp_path.exists() else 'missing'})")
+
     # Plot combined
     colors = {"Ridge": "#E74C3C", "RandomForest": "#2ECC71",
               "XGBoost": "#3498DB", "MLP": "#9B59B6"}
@@ -212,7 +261,7 @@ def mass_binned_analysis(
 
     results: dict[str, Any] = {}
     colors = {"Ridge": "#E74C3C", "RandomForest": "#2ECC71",
-              "XGBoost": "#3498DB"}
+              "XGBoost": "#3498DB", "MLP": "#9B59B6"}
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
@@ -262,13 +311,14 @@ def mass_binned_analysis(
 
     # Print table
     log()
-    log(f"  {'Bin':20s} │ {'Count':>6s} │ {'Ridge RMSE':>10s} │ {'RF RMSE':>10s} │ {'XGB RMSE':>10s}")
-    log("  " + "─" * 65)
+    header_models = [m for m in ["Ridge", "RandomForest", "XGBoost", "MLP"] if m in results]
+    header = f"  {'Bin':20s} │ {'Count':>6s}" + "".join(f" │ {m+' RMSE':>12s}" for m in header_models)
+    log(header)
+    log("  " + "─" * (30 + 15 * len(header_models)))
     for i, label in enumerate(bin_labels):
         row_items = [f"  {label:20s}", f" {results.get('Ridge', {}).get('bin_counts', [0]*7)[i]:>6}"]
-        for mname in ["Ridge", "RandomForest", "XGBoost"]:
-            if mname in results:
-                row_items.append(f" {results[mname]['bin_rmse'][i]:>10.4f}")
+        for mname in header_models:
+            row_items.append(f" {results[mname]['bin_rmse'][i]:>12.4f}")
         log(" │".join(row_items))
     log()
     return results

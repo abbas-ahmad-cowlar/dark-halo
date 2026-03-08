@@ -50,6 +50,37 @@ try:
 except ImportError:
     HAS_XGB = False
 
+try:
+    import torch
+    import torch.nn as nn
+    HAS_TORCH = True
+except ImportError:
+    HAS_TORCH = False
+
+
+# ---------------------------------------------------------------------------
+# MLP model definition (must match step7)
+# ---------------------------------------------------------------------------
+if HAS_TORCH:
+    class HaloMLP(nn.Module):
+        def __init__(self, n_features: int, hidden_sizes: list[int], dropout: float):
+            super().__init__()
+            layers = []
+            prev = n_features
+            for h in hidden_sizes:
+                layers.extend([
+                    nn.Linear(prev, h),
+                    nn.BatchNorm1d(h),
+                    nn.ReLU(),
+                    nn.Dropout(dropout),
+                ])
+                prev = h
+            layers.append(nn.Linear(prev, 1))
+            self.net = nn.Sequential(*layers)
+
+        def forward(self, x: torch.Tensor) -> torch.Tensor:
+            return self.net(x).squeeze(-1)
+
 # ---------------------------------------------------------------------------
 _log_lines: list[str] = []
 def log(msg: str = "") -> None:
@@ -301,6 +332,29 @@ def transfer_evaluation(simba_df: pd.DataFrame, tng_df: pd.DataFrame,
             "simba_test": metrics(y_simba_test, xgb_model.predict(X_simba_test)),
             "tng_test": metrics(y_tng, xgb_model.predict(X_tng)),
         }
+
+    # MLP (load saved model from step7)
+    mlp_path = Path("artifacts/step7_mlp/best_model.pt")
+    if HAS_TORCH and mlp_path.exists():
+        device = torch.device("cpu")
+        mlp_scaler = StandardScaler()
+        X_st_mlp_s = mlp_scaler.fit_transform(X_simba_train)
+        X_ss_mlp_s = mlp_scaler.transform(X_simba_test)
+        X_tng_mlp_s = mlp_scaler.transform(X_tng)
+
+        mlp_model = HaloMLP(n_features=len(feat_cols), hidden_sizes=[256, 128, 64], dropout=0.1)
+        mlp_model.load_state_dict(torch.load(mlp_path, map_location=device, weights_only=True))
+        mlp_model.eval()
+        with torch.no_grad():
+            y_simba_mlp = mlp_model(torch.tensor(X_ss_mlp_s, dtype=torch.float32)).numpy()
+            y_tng_mlp = mlp_model(torch.tensor(X_tng_mlp_s, dtype=torch.float32)).numpy()
+        results["MLP"] = {
+            "simba_test": metrics(y_simba_test, y_simba_mlp),
+            "tng_test": metrics(y_tng, y_tng_mlp),
+        }
+        log(f"  MLP loaded from {mlp_path}")
+    else:
+        log(f"  MLP skipped (torch={'yes' if HAS_TORCH else 'no'}, model={'exists' if mlp_path.exists() else 'missing'})")
 
     # Print table
     log(f"  {'Model':20s} │ {'SIMBA R²':>10s} │ {'TNG R²':>10s} │ {'Δ R²':>10s} │ {'SIMBA RMSE':>12s} │ {'TNG RMSE':>12s}")
