@@ -37,7 +37,19 @@
         "mae": 0.1182,
         "r2": 0.9528
       }
+    },
+    "MLP": {
+      "simba_test": {
+        "rmse": 0.1079,
+        "mae": 0.0733,
+        "r2": 0.9784
+      },
+      "tng_test": {
+        "rmse": 0.144,
+        "mae": 0.118,
+        "r2": 0.9521
+      }
     }
   },
-  "elapsed_seconds": 426.5
+  "elapsed_seconds": 49.7
 }
