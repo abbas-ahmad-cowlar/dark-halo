@@ -1,0 +1,40 @@
+============================================================
+Step 8b: PySR Symbolic Regression
+============================================================
+
+  Train sample: 10,000  (from 159,143)
+  Test: 32,767
+  Features: ['vel_disp', 'log_stellar_mass', 'half_mass_rad']
+
+── Running PySR ──
+  Iterations: 40
+  Max equation size: 25 nodes
+
+
+── PySR Results ──
+  Found 12 equations on Pareto front
+
+    #  Complexity          Loss     Score  Equation
+  ────────────────────────────────────────────────────────────────────────────────
+    0           1      0.542891    0.0000  9.98631
+    1           4      0.044709    0.8322  log(x0) + 6.9476166
+    2           6      0.042511    0.0252  log(x0 + -1.2806152) - -7.027306
+    3           8      0.036790    0.0723  (log(x0 + -3.8431273) * 0.8162235) + 7.7322774
+    4          11      0.033835    0.0279  (log(x0 + -1.6565294) + 7.3795733) + (-1.5078615 / sqrt(x2))
+    5          12      0.029331    0.1429  (log(x0 + -3.644353) * 0.83287716) + sqrt(sqrt(x2) - -53.8533)
+    6          13      0.028953    0.0130  (log(x0 + -4.0959044) * 0.7959142) + sqrt(log(square(x2)) - -54.67446)
+    7          14      0.028852    0.0035  (log(x0 + -3.87136) * 0.8080464) + sqrt((sqrt(x2) + 1.1165501) - -54.165333)
+    8          15      0.028135    0.0252  sqrt(log(square(1.5352796 - x2)) - -54.5045) + (log(x0 + -4.0684943) * 0.80289674)
+    9          16      0.028101    0.0012  sqrt(log(square(x2 - log(x0))) - -54.677612) + (log(x0 + -4.162548) * 0.8024273)
+   10          17      0.026390    0.0628  (log(x0 + -4.1906586) * 0.80368376) + sqrt(log(square((x2 - -4.9891477) - x1)) - -54.495903)
+   11          19      0.026388    0.0000  sqrt(log(square(((x2 - -4.1906586) + 0.80368376) - x1)) - -54.495903) + (0.80368376 * log(-4.1906586 + x0))
+
+  Equations saved: C:\Users\COWLAR\projects\dark-halo\artifacts\step8_final\pysr_equations.txt
+
+  Best equation test:  RMSE=0.1617  R²=0.9514  (32,767/32,767 valid)
+  Best equation: sqrt(sqrt(x2) + 53.8533) + 0.83287716*log(x0 - 3.644353)
+  Saved: pysr_pareto.png
+
+  Elapsed: 163.7s
+
+Step 8b (PySR) complete. ✓

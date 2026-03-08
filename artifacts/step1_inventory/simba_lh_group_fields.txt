@@ -1,0 +1,9 @@
+simulation_set_id
+Group_M_Crit200
+Group_FirstSub
+Group_Nsubs
+Group_Mass
+Group_LenType_dm
+Group_Pos_x
+Group_Pos_y
+Group_Pos_z

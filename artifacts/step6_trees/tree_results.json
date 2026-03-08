@@ -1,0 +1,59 @@
+{
+  "RandomForest": {
+    "config": {
+      "n_estimators": 200,
+      "max_depth": 15,
+      "min_samples_leaf": 5
+    },
+    "train": {
+      "rmse": 0.084576,
+      "mae": 0.054022,
+      "r2": 0.986679
+    },
+    "val": {
+      "rmse": 0.097633,
+      "mae": 0.063299,
+      "r2": 0.979161
+    },
+    "test": {
+      "rmse": 0.104241,
+      "mae": 0.068118,
+      "r2": 0.979802
+    }
+  },
+  "XGBoost": {
+    "config": {
+      "n_estimators": 300,
+      "max_depth": 6,
+      "learning_rate": 0.1,
+      "subsample": 0.8
+    },
+    "train": {
+      "rmse": 0.097998,
+      "mae": 0.063884,
+      "r2": 0.982116
+    },
+    "val": {
+      "rmse": 0.097719,
+      "mae": 0.063312,
+      "r2": 0.979125
+    },
+    "test": {
+      "rmse": 0.10441,
+      "mae": 0.068027,
+      "r2": 0.979736
+    }
+  },
+  "_meta": {
+    "features": [
+      "log_stellar_mass",
+      "log_gas_mass",
+      "vel_disp",
+      "sfr",
+      "half_mass_rad",
+      "env_dist_5nn"
+    ],
+    "best_model": "RandomForest",
+    "elapsed_seconds": 1112.8
+  }
+}

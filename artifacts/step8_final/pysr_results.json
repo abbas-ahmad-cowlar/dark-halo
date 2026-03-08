@@ -1,0 +1,73 @@
+{
+  "best_equation": "sqrt(sqrt(x2) + 53.8533) + 0.83287716*log(x0 - 3.644353)",
+  "best_test_rmse": 0.161723,
+  "best_test_r2": 0.951384,
+  "n_equations": 12,
+  "features_used": [
+    "vel_disp",
+    "log_stellar_mass",
+    "half_mass_rad"
+  ],
+  "pareto_front": [
+    {
+      "complexity": 1,
+      "loss": 0.542891,
+      "equation": "9.98631"
+    },
+    {
+      "complexity": 4,
+      "loss": 0.044709,
+      "equation": "log(x0) + 6.9476166"
+    },
+    {
+      "complexity": 6,
+      "loss": 0.042511,
+      "equation": "log(x0 + -1.2806152) - -7.027306"
+    },
+    {
+      "complexity": 8,
+      "loss": 0.03679,
+      "equation": "(log(x0 + -3.8431273) * 0.8162235) + 7.7322774"
+    },
+    {
+      "complexity": 11,
+      "loss": 0.033835,
+      "equation": "(log(x0 + -1.6565294) + 7.3795733) + (-1.5078615 / sqrt(x2))"
+    },
+    {
+      "complexity": 12,
+      "loss": 0.029331,
+      "equation": "(log(x0 + -3.644353) * 0.83287716) + sqrt(sqrt(x2) - -53.8533)"
+    },
+    {
+      "complexity": 13,
+      "loss": 0.028953,
+      "equation": "(log(x0 + -4.0959044) * 0.7959142) + sqrt(log(square(x2)) - -54.67446)"
+    },
+    {
+      "complexity": 14,
+      "loss": 0.028852,
+      "equation": "(log(x0 + -3.87136) * 0.8080464) + sqrt((sqrt(x2) + 1.1165501) - -54.165333)"
+    },
+    {
+      "complexity": 15,
+      "loss": 0.028135,
+      "equation": "sqrt(log(square(1.5352796 - x2)) - -54.5045) + (log(x0 + -4.0684943) * 0.80289674)"
+    },
+    {
+      "complexity": 16,
+      "loss": 0.028101,
+      "equation": "sqrt(log(square(x2 - log(x0))) - -54.677612) + (log(x0 + -4.162548) * 0.8024273)"
+    },
+    {
+      "complexity": 17,
+      "loss": 0.02639,
+      "equation": "(log(x0 + -4.1906586) * 0.80368376) + sqrt(log(square((x2 - -4.9891477) - x1)) - -54.495903)"
+    },
+    {
+      "complexity": 19,
+      "loss": 0.026388,
+      "equation": "sqrt(log(square(((x2 - -4.1906586) + 0.80368376) - x1)) - -54.495903) + (0.80368376 * log(-4.1906586 + x0))"
+    }
+  ]
+}
