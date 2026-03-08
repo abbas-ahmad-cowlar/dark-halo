@@ -1,0 +1,43 @@
+{
+  "simba_rows": 228773,
+  "tng_rows": 220895,
+  "transfer_results": {
+    "Ridge": {
+      "simba_test": {
+        "rmse": 0.364,
+        "mae": 0.2748,
+        "r2": 0.7537
+      },
+      "tng_test": {
+        "rmse": 0.3004,
+        "mae": 0.2442,
+        "r2": 0.7915
+      }
+    },
+    "RandomForest": {
+      "simba_test": {
+        "rmse": 0.1042,
+        "mae": 0.0681,
+        "r2": 0.9798
+      },
+      "tng_test": {
+        "rmse": 0.1435,
+        "mae": 0.119,
+        "r2": 0.9524
+      }
+    },
+    "XGBoost": {
+      "simba_test": {
+        "rmse": 0.1044,
+        "mae": 0.068,
+        "r2": 0.9797
+      },
+      "tng_test": {
+        "rmse": 0.1429,
+        "mae": 0.1182,
+        "r2": 0.9528
+      }
+    }
+  },
+  "elapsed_seconds": 426.5
+}

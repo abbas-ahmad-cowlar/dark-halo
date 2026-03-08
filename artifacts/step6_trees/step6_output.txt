@@ -1,0 +1,60 @@
+============================================================
+Step 6: Baseline 2 — Random Forest / XGBoost
+============================================================
+
+  Loaded: 228,773 rows   Features: ['log_stellar_mass', 'log_gas_mass', 'vel_disp', 'sfr', 'half_mass_rad', 'env_dist_5nn']
+
+  Train: 159,143  Val: 36,863  Test: 32,767
+
+── Random Forest Hyperparameter Search ──
+  Training RF(n=200,d=15,ml=5) ...
+    Val: RMSE=0.0976  R²=0.9792
+  Training RF(n=300,d=20,ml=3) ...
+    Val: RMSE=0.0988  R²=0.9787
+  Training RF(n=300,d=None,ml=2) ...
+    Val: RMSE=0.0996  R²=0.9783
+  Best RF config: {'n_estimators': 200, 'max_depth': 15, 'min_samples_leaf': 5}
+
+── Best Random Forest — Full Evaluation ──
+  train                 RMSE=0.0846  MAE=0.0540  R²=0.9867
+  val                   RMSE=0.0976  MAE=0.0633  R²=0.9792
+  test                  RMSE=0.1042  MAE=0.0681  R²=0.9798
+  Feature importances (RF built-in):
+    vel_disp              0.8052  ████████████████████████████████████████████████
+    log_stellar_mass      0.1664  █████████
+    half_mass_rad         0.0235  █
+    log_gas_mass          0.0026  
+    env_dist_5nn          0.0021  
+    sfr                   0.0003  
+
+── XGBoost Hyperparameter Search ──
+  Training XGB(n=300,d=6,lr=0.1) ...
+    Val: RMSE=0.0977  R²=0.9791
+  Training XGB(n=500,d=8,lr=0.05) ...
+    Val: RMSE=0.0984  R²=0.9788
+  Training XGB(n=500,d=10,lr=0.05) ...
+    Val: RMSE=0.1000  R²=0.9781
+  Best XGB config: {'n_estimators': 300, 'max_depth': 6, 'learning_rate': 0.1, 'subsample': 0.8}
+
+── Best XGBoost — Full Evaluation ──
+  train                 RMSE=0.0980  MAE=0.0639  R²=0.9821
+  val                   RMSE=0.0977  MAE=0.0633  R²=0.9791
+  test                  RMSE=0.1044  MAE=0.0680  R²=0.9797
+
+── Diagnostic Plots ──
+  Saved: pred_vs_true.png
+  Saved: residual_plot.png
+
+── SHAP Analysis on RandomForest ──
+  Mean |SHAP| values:
+    vel_disp              0.5305  ███████████████
+    log_stellar_mass      0.0848  ██
+    half_mass_rad         0.0464  █
+    log_gas_mass          0.0131  
+    env_dist_5nn          0.0028  
+    sfr                   0.0010  
+  Saved: shap_importance.png
+
+  Elapsed: 1112.8s
+
+Step 6 complete. ✓

@@ -1,0 +1,90 @@
+{
+  "LinearRegression": {
+    "train": {
+      "rmse": 0.355403,
+      "mae": 0.262833,
+      "r2": 0.764781
+    },
+    "val": {
+      "rmse": 0.303358,
+      "mae": 0.230938,
+      "r2": 0.798819
+    },
+    "test": {
+      "rmse": 0.363983,
+      "mae": 0.274838,
+      "r2": 0.753739
+    },
+    "coefficients": {
+      "log_stellar_mass": 0.1699468359364142,
+      "log_gas_mass": 0.06355052818586104,
+      "vel_disp": 0.4939937233013077,
+      "sfr": -0.017888284819466763,
+      "half_mass_rad": -0.043325574191512055,
+      "env_dist_5nn": -0.0045774596208411475
+    }
+  },
+  "Ridge(\u03b1=1.0)": {
+    "train": {
+      "rmse": 0.355403,
+      "mae": 0.262833,
+      "r2": 0.764781
+    },
+    "val": {
+      "rmse": 0.303358,
+      "mae": 0.230937,
+      "r2": 0.798819
+    },
+    "test": {
+      "rmse": 0.363984,
+      "mae": 0.274838,
+      "r2": 0.753738
+    },
+    "coefficients": {
+      "log_stellar_mass": 0.16995129747056245,
+      "log_gas_mass": 0.06355038874361467,
+      "vel_disp": 0.493985635141917,
+      "sfr": -0.017887472446283338,
+      "half_mass_rad": -0.04332237561218027,
+      "env_dist_5nn": -0.004577689785608227
+    }
+  },
+  "Ridge(\u03b1=10.0)": {
+    "train": {
+      "rmse": 0.355403,
+      "mae": 0.262829,
+      "r2": 0.764781
+    },
+    "val": {
+      "rmse": 0.303353,
+      "mae": 0.230932,
+      "r2": 0.798825
+    },
+    "test": {
+      "rmse": 0.363988,
+      "mae": 0.274839,
+      "r2": 0.753732
+    },
+    "coefficients": {
+      "log_stellar_mass": 0.16999143194287955,
+      "log_gas_mass": 0.06354913646361027,
+      "vel_disp": 0.4939128646087461,
+      "sfr": -0.017880162722276893,
+      "half_mass_rad": -0.04329359838109533,
+      "env_dist_5nn": -0.004579761825476654
+    }
+  },
+  "_meta": {
+    "features": [
+      "log_stellar_mass",
+      "log_gas_mass",
+      "vel_disp",
+      "sfr",
+      "half_mass_rad",
+      "env_dist_5nn"
+    ],
+    "target": "log10_M_halo",
+    "preprocessing": "log10(mass+1) for stellar_mass, gas_mass; StandardScaler on all",
+    "elapsed_seconds": 2.9
+  }
+}

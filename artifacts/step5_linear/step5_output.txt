@@ -1,0 +1,54 @@
+============================================================
+Step 5: Baseline 1 — Linear / Ridge Regression
+============================================================
+
+  Loaded: 228,773 rows
+  Features: ['log_stellar_mass', 'log_gas_mass', 'vel_disp', 'sfr', 'half_mass_rad', 'env_dist_5nn']
+
+  Train:  159,143    Val:  36,863    Test:  32,767
+
+── LinearRegression ──
+  train                 RMSE=0.3554  MAE=0.2628  R²=0.7648
+  val                   RMSE=0.3034  MAE=0.2309  R²=0.7988
+  test                  RMSE=0.3640  MAE=0.2748  R²=0.7537
+  Coefficients:
+    vel_disp              +0.4940  +████
+    log_stellar_mass      +0.1699  +█
+    log_gas_mass          +0.0636  +
+    half_mass_rad         -0.0433  -
+    sfr                   -0.0179  -
+    env_dist_5nn          -0.0046  -
+
+── Ridge(α=1.0) ──
+  train                 RMSE=0.3554  MAE=0.2628  R²=0.7648
+  val                   RMSE=0.3034  MAE=0.2309  R²=0.7988
+  test                  RMSE=0.3640  MAE=0.2748  R²=0.7537
+  Coefficients:
+    vel_disp              +0.4940  +████
+    log_stellar_mass      +0.1700  +█
+    log_gas_mass          +0.0636  +
+    half_mass_rad         -0.0433  -
+    sfr                   -0.0179  -
+    env_dist_5nn          -0.0046  -
+
+── Ridge(α=10.0) ──
+  train                 RMSE=0.3554  MAE=0.2628  R²=0.7648
+  val                   RMSE=0.3034  MAE=0.2309  R²=0.7988
+  test                  RMSE=0.3640  MAE=0.2748  R²=0.7537
+  Coefficients:
+    vel_disp              +0.4939  +████
+    log_stellar_mass      +0.1700  +█
+    log_gas_mass          +0.0635  +
+    half_mass_rad         -0.0433  -
+    sfr                   -0.0179  -
+    env_dist_5nn          -0.0046  -
+
+── Diagnostic Plots ──
+  Saved: C:\Users\COWLAR\projects\dark-halo\artifacts\step5_linear\pred_vs_true.png
+  Saved: C:\Users\COWLAR\projects\dark-halo\artifacts\step5_linear\residual_plot.png
+
+  Results: C:\Users\COWLAR\projects\dark-halo\artifacts\step5_linear\linear_results.json
+
+  Elapsed: 2.9s
+
+Step 5 complete. ✓

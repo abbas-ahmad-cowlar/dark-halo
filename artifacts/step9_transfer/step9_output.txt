@@ -1,0 +1,140 @@
+╔══════════════════════════════════════════════════════════╗
+║  Step 9: Cross-Simulation Transfer Test                 ║
+╚══════════════════════════════════════════════════════════╝
+
+── Downloading IllustrisTNG LH data ──
+
+  Downloading Group catalog...
+    [  1/50]  Group LH_0  ✓  18180 rows  (3.3s)
+    [  2/50]  Group LH_1  ✓  18925 rows  (4.0s)
+    [  3/50]  Group LH_2  ✓  20554 rows  (3.9s)
+    [  4/50]  Group LH_3  ✓  19873 rows  (3.5s)
+    [  5/50]  Group LH_4  ✓  16950 rows  (3.2s)
+    [  6/50]  Group LH_5  ✓  21212 rows  (3.2s)
+    [  7/50]  Group LH_6  ✓  20657 rows  (3.4s)
+    [  8/50]  Group LH_7  ✓  20575 rows  (4.3s)
+    [  9/50]  Group LH_8  ✓  18557 rows  (3.2s)
+    [ 10/50]  Group LH_9  ✓  21407 rows  (4.4s)
+    [ 11/50]  Group LH_10  ✓  19492 rows  (3.4s)
+    [ 12/50]  Group LH_11  ✓  19772 rows  (3.6s)
+    [ 13/50]  Group LH_12  ✓  20909 rows  (4.1s)
+    [ 14/50]  Group LH_13  ✓  21732 rows  (3.6s)
+    [ 15/50]  Group LH_14  ✓  16240 rows  (3.6s)
+    [ 16/50]  Group LH_15  ✓  18292 rows  (3.3s)
+    [ 17/50]  Group LH_16  ✓  15955 rows  (3.2s)
+    [ 18/50]  Group LH_17  ✓  15455 rows  (3.5s)
+    [ 19/50]  Group LH_18  ✓  16424 rows  (3.3s)
+    [ 20/50]  Group LH_19  ✓  18606 rows  (4.1s)
+    [ 21/50]  Group LH_20  ✓  20232 rows  (3.9s)
+    [ 22/50]  Group LH_21  ✓  18629 rows  (3.6s)
+    [ 23/50]  Group LH_22  ✓  16886 rows  (3.6s)
+    [ 24/50]  Group LH_23  ✓  18831 rows  (3.8s)
+    [ 25/50]  Group LH_24  ✓  18767 rows  (3.5s)
+    [ 26/50]  Group LH_25  ✓  16492 rows  (3.4s)
+    [ 27/50]  Group LH_26  ✓  20434 rows  (3.6s)
+    [ 28/50]  Group LH_27  ✓  18072 rows  (3.4s)
+    [ 29/50]  Group LH_28  ✓  17465 rows  (3.5s)
+    [ 30/50]  Group LH_29  ✓  19730 rows  (3.4s)
+    [ 31/50]  Group LH_30  ✓  16721 rows  (3.4s)
+    [ 32/50]  Group LH_31  ✓  18731 rows  (3.6s)
+    [ 33/50]  Group LH_32  ✓  18442 rows  (3.4s)
+    [ 34/50]  Group LH_33  ✓  18766 rows  (3.6s)
+    [ 35/50]  Group LH_34  ✓  20133 rows  (3.6s)
+    [ 36/50]  Group LH_35  ✓  17615 rows  (3.5s)
+    [ 37/50]  Group LH_36  ✓  19676 rows  (4.1s)
+    [ 38/50]  Group LH_37  ✓  20508 rows  (3.7s)
+    [ 39/50]  Group LH_38  ✓  21077 rows  (3.8s)
+    [ 40/50]  Group LH_39  ✓  19335 rows  (3.3s)
+    [ 41/50]  Group LH_40  ✓  16006 rows  (3.4s)
+    [ 42/50]  Group LH_41  ✓  18978 rows  (3.4s)
+    [ 43/50]  Group LH_42  ✓  19999 rows  (3.7s)
+    [ 44/50]  Group LH_43  ✓  15688 rows  (3.7s)
+    [ 45/50]  Group LH_44  ✓  18383 rows  (3.7s)
+    [ 46/50]  Group LH_45  ✓  16003 rows  (3.5s)
+    [ 47/50]  Group LH_46  ✓  20598 rows  (3.7s)
+    [ 48/50]  Group LH_47  ✓  19797 rows  (3.6s)
+    [ 49/50]  Group LH_48  ✓  18410 rows  (3.3s)
+    [ 50/50]  Group LH_49  ✓  22051 rows  (3.9s)
+  Total Group rows: 942,222
+
+  Downloading Subhalo catalog...
+    [  1/50]  Subhalo LH_0  ✓  15712 rows  (3.8s)
+    [  2/50]  Subhalo LH_1  ✓  16135 rows  (3.9s)
+    [  3/50]  Subhalo LH_2  ✓  18580 rows  (3.9s)
+    [  4/50]  Subhalo LH_3  ✓  17235 rows  (3.9s)
+    [  5/50]  Subhalo LH_4  ✓  12099 rows  (3.3s)
+    [  6/50]  Subhalo LH_5  ✓  19531 rows  (4.3s)
+    [  7/50]  Subhalo LH_6  ✓  17915 rows  (3.9s)
+    [  8/50]  Subhalo LH_7  ✓  17990 rows  (3.9s)
+    [  9/50]  Subhalo LH_8  ✓  17055 rows  (4.0s)
+    [ 10/50]  Subhalo LH_9  ✓  20202 rows  (4.0s)
+    [ 11/50]  Subhalo LH_10  ✓  18146 rows  (4.5s)
+    [ 12/50]  Subhalo LH_11  ✓  18128 rows  (4.0s)
+    [ 13/50]  Subhalo LH_12  ✓  19353 rows  (4.9s)
+    [ 14/50]  Subhalo LH_13  ✓  19926 rows  (4.2s)
+    [ 15/50]  Subhalo LH_14  ✓  12695 rows  (3.5s)
+    [ 16/50]  Subhalo LH_15  ✓  15750 rows  (4.0s)
+    [ 17/50]  Subhalo LH_16  ✓  11708 rows  (3.3s)
+    [ 18/50]  Subhalo LH_17  ✓  13186 rows  (3.5s)
+    [ 19/50]  Subhalo LH_18  ✓  13534 rows  (3.6s)
+    [ 20/50]  Subhalo LH_19  ✓  17233 rows  (3.7s)
+    [ 21/50]  Subhalo LH_20  ✓  17982 rows  (3.8s)
+    [ 22/50]  Subhalo LH_21  ✓  18291 rows  (4.0s)
+    [ 23/50]  Subhalo LH_22  ✓  13334 rows  (3.4s)
+    [ 24/50]  Subhalo LH_23  ✓  16669 rows  (3.8s)
+    [ 25/50]  Subhalo LH_24  ✓  17026 rows  (3.8s)
+    [ 26/50]  Subhalo LH_25  ✓  12139 rows  (3.8s)
+    [ 27/50]  Subhalo LH_26  ✓  17616 rows  (4.2s)
+    [ 28/50]  Subhalo LH_27  ✓  16336 rows  (3.8s)
+    [ 29/50]  Subhalo LH_28  ✓  17197 rows  (3.6s)
+    [ 30/50]  Subhalo LH_29  ✓  17874 rows  (4.2s)
+    [ 31/50]  Subhalo LH_30  ✓  13110 rows  (4.2s)
+    [ 32/50]  Subhalo LH_31  ✓  17618 rows  (4.6s)
+    [ 33/50]  Subhalo LH_32  ✓  17054 rows  (4.5s)
+    [ 34/50]  Subhalo LH_33  ✓  15248 rows  (3.7s)
+    [ 35/50]  Subhalo LH_34  ✓  18556 rows  (4.2s)
+    [ 36/50]  Subhalo LH_35  ✓  14736 rows  (3.7s)
+    [ 37/50]  Subhalo LH_36  ✓  18264 rows  (4.1s)
+    [ 38/50]  Subhalo LH_37  ✓  18612 rows  (4.5s)
+    [ 39/50]  Subhalo LH_38  ✓  18917 rows  (4.0s)
+    [ 40/50]  Subhalo LH_39  ✓  17103 rows  (4.6s)
+    [ 41/50]  Subhalo LH_40  ✓  12477 rows  (3.9s)
+    [ 42/50]  Subhalo LH_41  ✓  18061 rows  (3.9s)
+    [ 43/50]  Subhalo LH_42  ✓  16824 rows  (3.8s)
+    [ 44/50]  Subhalo LH_43  ✓  12715 rows  (3.5s)
+    [ 45/50]  Subhalo LH_44  ✓  15775 rows  (3.9s)
+    [ 46/50]  Subhalo LH_45  ✓  12000 rows  (3.4s)
+    [ 47/50]  Subhalo LH_46  ✓  18371 rows  (4.7s)
+    [ 48/50]  Subhalo LH_47  ✓  17906 rows  (3.8s)
+    [ 49/50]  Subhalo LH_48  ✓  16852 rows  (4.4s)
+    [ 50/50]  Subhalo LH_49  ✓  20645 rows  (4.0s)
+  Total Subhalo rows: 827,421
+
+── Building TNG dataset ──
+  Raw: 942,222 groups, 827,421 subhalos
+  After DM>=100 filter: 223,543 groups
+  After central merge: 221,144 rows
+  Final TNG dataset: 220,895 rows
+
+  SIMBA dataset: 228,773 rows
+  TNG dataset:   220,895 rows
+
+============================================================
+Transfer Evaluation: SIMBA-trained → TNG-tested
+============================================================
+
+  SIMBA train: 159,143  SIMBA test: 32,767
+  TNG test:    220,895
+
+  Model                │   SIMBA R² │     TNG R² │       Δ R² │   SIMBA RMSE │     TNG RMSE
+  ─────────────────────────────────────────────────────────────────────────────────────
+  Ridge                │     0.7537 │     0.7915 │    +0.0378 │       0.3640 │       0.3004
+  RandomForest         │     0.9798 │     0.9524 │    -0.0274 │       0.1042 │       0.1435
+  XGBoost              │     0.9797 │     0.9528 │    -0.0269 │       0.1044 │       0.1429
+
+  Saved: transfer_comparison.png
+
+  Total elapsed: 426.5s
+
+Step 9 complete. ✓
+All steps (1-9) of the Dark Halo pipeline are now complete!

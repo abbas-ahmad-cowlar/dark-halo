@@ -1,0 +1,67 @@
+============================================================
+Step 4: EDA and Sanity Checks
+============================================================
+
+  Loading: C:\Users\COWLAR\projects\dark-halo\data\camels\simba_LH\dataset_split.parquet
+  Rows: 228,773  Columns: 17
+  Splits: {'train': np.int64(159143), 'val': np.int64(36863), 'test': np.int64(32767)}
+
+── 1. Missingness & Non-Finite Audit ──
+  log10_M_halo          NaN=     0  Inf=     0  ✓
+  stellar_mass          NaN=     0  Inf=     0  ✓
+  gas_mass              NaN=     0  Inf=     0  ✓
+  vel_disp              NaN=     0  Inf=     0  ✓
+  sfr                   NaN=     0  Inf=     0  ✓
+  half_mass_rad         NaN=     0  Inf=     0  ✓
+  pos_x                 NaN=     0  Inf=     0  ✓
+  pos_y                 NaN=     0  Inf=     0  ✓
+  pos_z                 NaN=     0  Inf=     0  ✓
+  env_dist_5nn          NaN=     0  Inf=     0  ✓
+  Overall: ALL CLEAN ✓
+
+── 2. Distribution Statistics ──
+  log10_M_halo          mean=        9.9973  std=        0.7244  skew=   0.27  kurt=   1.08
+  stellar_mass          mean=1284941938.6474  std=20826237505.1047  skew=  83.42  kurt=12430.49
+  gas_mass              mean=5018654798.5332  std=101303875823.7541  skew= 124.50  kurt=25043.01
+  vel_disp              mean=       27.4544  std=       24.7918  skew=   3.52  kurt=  26.93
+  sfr                   mean=        0.0686  std=        0.9562  skew= 143.92  kurt=32739.45
+  half_mass_rad         mean=       25.6345  std=       15.6268  skew=   6.54  kurt=  86.05
+  pos_x                 mean=       12.4448  std=        7.3276  skew=   0.02  kurt=  -1.23
+  pos_y                 mean=       12.3220  std=        7.3660  skew=   0.05  kurt=  -1.24
+  pos_z                 mean=       12.4224  std=        7.2562  skew=   0.03  kurt=  -1.23
+  env_dist_5nn          mean=        1.1500  std=        0.5266  skew=   1.47  kurt=   3.63
+
+── 3. Target Distribution Plot ──
+  Saved: C:\Users\COWLAR\projects\dark-halo\artifacts\step4_eda\target_distribution.png
+
+── 4. Feature Distribution Plots ──
+  Saved: C:\Users\COWLAR\projects\dark-halo\artifacts\step4_eda\feature_distributions.png
+
+── 5. Correlation Analysis ──
+  Feature → Target correlations:
+    stellar_mass          r=+0.2105  +██████
+    gas_mass              r=+0.1489  +████
+    vel_disp              r=+0.8522  +█████████████████████████
+    sfr                   r=+0.1758  +█████
+    half_mass_rad         r=+0.3128  +█████████
+    pos_x                 r=+0.0123  +
+    pos_y                 r=+0.0091  +
+    pos_z                 r=+0.0092  +
+    env_dist_5nn          r=-0.1143  -███
+
+  Saved: C:\Users\COWLAR\projects\dark-halo\artifacts\step4_eda\correlation_matrix.png
+
+── 6. Feature vs Target Scatter Plots ──
+  Saved: C:\Users\COWLAR\projects\dark-halo\artifacts\step4_eda\feature_vs_target.png
+
+── 7. Isolation Forest OOD Detection ──
+  Outliers flagged: 4,654 / 228,773 (2.03%)
+    train:  3183 /  159143 outliers (2.00%)
+    val  :   792 /   36863 outliers (2.15%)
+    test :   679 /   32767 outliers (2.07%)
+
+  Saved: C:\Users\COWLAR\projects\dark-halo\artifacts\step4_eda\isolation_forest_ood.png
+
+  Total elapsed: 18.6s
+
+Step 4 complete. ✓

@@ -1,0 +1,67 @@
+# Data
+data/
+*.parquet
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.eggs/
+*.egg-info/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model weights
+*.pt
+*.h5
+*.pkl
+*.joblib
+*.onnx
+
+# PySR / Julia
+hall_of_fame*
+.SymbolicRegression.jl/
+julia_project/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# LaTeX build artifacts (keep only .tex and .pdf)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+texput.*
+
+# Planning / internal docs (not needed on GitHub)
+plan.md
+AGENTS.md
+docs/report_plan.md
+
+# Gemini agent files
+.gemini/

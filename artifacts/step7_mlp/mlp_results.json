@@ -1,0 +1,44 @@
+{
+  "train": {
+    "rmse": 0.110852,
+    "mae": 0.074422,
+    "r2": 0.977117
+  },
+  "val": {
+    "rmse": 0.100498,
+    "mae": 0.068104,
+    "r2": 0.97792
+  },
+  "test": {
+    "rmse": 0.107884,
+    "mae": 0.073305,
+    "r2": 0.978365
+  },
+  "mc_dropout": {
+    "n_samples": 50,
+    "mean_uncertainty": 0.452056,
+    "median_uncertainty": 0.44866,
+    "p90_uncertainty": 0.527943
+  },
+  "_meta": {
+    "architecture": [
+      256,
+      128,
+      64
+    ],
+    "dropout": 0.1,
+    "epochs_run": 89,
+    "best_epoch": 69,
+    "features": [
+      "log_stellar_mass",
+      "log_gas_mass",
+      "vel_disp",
+      "sfr",
+      "half_mass_rad",
+      "env_dist_5nn"
+    ],
+    "device": "cpu",
+    "n_params": 43905,
+    "elapsed_seconds": 552.3
+  }
+}

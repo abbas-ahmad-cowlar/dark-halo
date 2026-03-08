@@ -1,0 +1,59 @@
+============================================================
+Step 2: Dataset Construction
+============================================================
+  Data dir: C:\Users\COWLAR\projects\dark-halo\data\camels\simba_LH
+
+── Loading raw data ──
+  Groups:    1,012,897 rows
+  Subhalos:    804,761 rows
+
+── Quality filter: Group_LenType_dm >= 100 ──
+  Before:  1,012,897
+  After:     236,097  (dropped 776,800)
+
+── Extracting central subhalos ──
+  Merged rows:       232,563
+  Link verification: Group_FirstSub merge succeeded
+  Sample Subhalo_GrNr values: [np.int64(0), np.int64(1), np.int64(2), np.int64(3), np.int64(4)]
+
+── Applying unit conversions ──
+  Masses × 1e10 → Msun/h
+  Positions ÷ 1e3 → Mpc/h
+
+── Computing log10 target ──
+  Dropped 3,790 rows with M_Crit200 <= 0
+  log10_M_halo range: [7.86, 14.52]
+
+── Computing environment proxy: 5th nearest neighbor distance ──
+  Processed 50 realizations in 0.6s
+  env_dist_5nn range: [0.213238, 6.2838] Mpc/h
+
+── Dropping invalid rows ──
+  Before:    228,773
+  After:     228,773  (dropped 0 non-finite rows)
+
+── Saving ──
+  Dataset: C:\Users\COWLAR\projects\dark-halo\data\camels\simba_LH\dataset.parquet  (20.8 MB)
+  Metadata: C:\Users\COWLAR\projects\dark-halo\artifacts\step2_construction\build_metadata.json
+
+─── Final Dataset Summary ───
+  Rows:        228,773
+  Columns:  16
+  Features: ['stellar_mass', 'gas_mass', 'vel_disp', 'sfr', 'half_mass_rad', 'pos_x', 'pos_y', 'pos_z', 'env_dist_5nn']
+  Target:   log10_M_halo
+
+  Quick stats:
+    log10_M_halo          min=      7.8645  max=     14.5201  mean=      9.9973
+    stellar_mass          min=      0.0000  max=4497329000000.0000  mean=1284941938.6474
+    gas_mass              min=      0.0000  max=26410590000000.0039  mean=5018654798.5332
+    vel_disp              min=      3.7950  max=    736.0823  mean=     27.4544
+    sfr                   min=      0.0000  max=    265.4845  mean=      0.0686
+    half_mass_rad         min=      0.9571  max=    458.9270  mean=     25.6345
+    pos_x                 min=      0.0001  max=     24.9999  mean=     12.4448
+    pos_y                 min=      0.0000  max=     24.9997  mean=     12.3220
+    pos_z                 min=      0.0003  max=     25.0000  mean=     12.4224
+    env_dist_5nn          min=      0.2132  max=      6.2838  mean=      1.1500
+
+  Elapsed: 1.7s
+
+Step 2 complete. ✓

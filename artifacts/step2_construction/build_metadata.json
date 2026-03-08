@@ -1,0 +1,54 @@
+{
+  "suite": "simba",
+  "stages": {
+    "raw": {
+      "groups": 1012897,
+      "subhalos": 804761
+    },
+    "after_quality_filter": {
+      "groups": 236097
+    },
+    "after_central_merge": {
+      "rows": 232563
+    },
+    "after_log_target": {
+      "rows": 228773
+    },
+    "final": {
+      "rows": 228773
+    }
+  },
+  "dataset_path": "C:\\Users\\COWLAR\\projects\\dark-halo\\data\\camels\\simba_LH\\dataset.parquet",
+  "final_columns": [
+    "simulation_set_id",
+    "log10_M_halo",
+    "stellar_mass",
+    "gas_mass",
+    "vel_disp",
+    "sfr",
+    "half_mass_rad",
+    "pos_x",
+    "pos_y",
+    "pos_z",
+    "env_dist_5nn",
+    "Group_M_Crit200",
+    "Group_Mass",
+    "Group_LenType_dm",
+    "Group_FirstSub",
+    "Group_Nsubs"
+  ],
+  "final_rows": 228773,
+  "feature_columns": [
+    "stellar_mass",
+    "gas_mass",
+    "vel_disp",
+    "sfr",
+    "half_mass_rad",
+    "pos_x",
+    "pos_y",
+    "pos_z",
+    "env_dist_5nn"
+  ],
+  "target_column": "log10_M_halo",
+  "elapsed_seconds": 1.7
+}

@@ -1,0 +1,12 @@
+simulation_set_id
+Subhalo_id
+Subhalo_GrNr
+Subhalo_MassType_gas
+Subhalo_MassType_stars
+Subhalo_VelDisp
+Subhalo_SFR
+Subhalo_HalfmassRad
+Subhalo_Pos_x
+Subhalo_Pos_y
+Subhalo_Pos_z
+Subhalo_Mass

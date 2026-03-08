@@ -1,0 +1,30 @@
+=== STEP 1 VALIDATION ===
+
+Groups:    1,012,897 rows, 9 cols
+Subhalos:    804,761 rows, 12 cols
+
+Group columns:   ['simulation_set_id', 'Group_M_Crit200', 'Group_FirstSub', 'Group_Nsubs', 'Group_Mass', 'Group_LenType_dm', 'Group_Pos_x', 'Group_Pos_y', 'Group_Pos_z']
+Subhalo columns: ['simulation_set_id', 'Subhalo_id', 'Subhalo_GrNr', 'Subhalo_MassType_gas', 'Subhalo_MassType_stars', 'Subhalo_VelDisp', 'Subhalo_SFR', 'Subhalo_HalfmassRad', 'Subhalo_Pos_x', 'Subhalo_Pos_y', 'Subhalo_Pos_z', 'Subhalo_Mass']
+
+Group missing cols:   NONE
+Subhalo missing cols: NONE
+
+First 5 Group rows:
+  real=0  M_Crit200=436.8603  DM_particles=194154
+  real=0  M_Crit200=265.9062  DM_particles=210213
+  real=0  M_Crit200=161.9021  DM_particles=153655
+  real=0  M_Crit200=256.9051  DM_particles=135464
+  real=0  M_Crit200=271.5300  DM_particles=133100
+
+First 5 Subhalo rows:
+  real=0  id=0  GrNr=0  M_stars=48.077137  VelDisp=164.15
+  real=0  id=1  GrNr=0  M_stars=0.238985  VelDisp=71.60
+  real=0  id=2  GrNr=0  M_stars=0.040580  VelDisp=34.77
+  real=0  id=3  GrNr=0  M_stars=0.036371  VelDisp=57.28
+  real=0  id=4  GrNr=0  M_stars=0.092120  VelDisp=46.75
+
+Manifest total_groups:    1,012,897
+Manifest total_subhalos:    804,761
+Parquet matches manifest: YES
+
+=== VALIDATION PASSED ===

@@ -1,0 +1,126 @@
+╔══════════════════════════════════════════════════════════╗
+║  Step 8: Final Evaluation Package                        ║
+╚══════════════════════════════════════════════════════════╝
+
+  Dataset: 228,773 rows,  Features: ['log_stellar_mass', 'log_gas_mass', 'vel_disp', 'sfr', 'half_mass_rad', 'env_dist_5nn']
+
+============================================================
+1. Unified Model Comparison Table
+============================================================
+
+  Model                │ Split  │     RMSE │      MAE │       R²
+  ────────────────────────────────────────────────────────────
+  Ridge                │ train  │   0.3554 │   0.2628 │   0.7648
+  Ridge                │ val    │   0.3034 │   0.2309 │   0.7988
+  Ridge                │ test   │   0.3640 │   0.2748 │   0.7537
+  ────────────────────────────────────────────────────────────
+  RandomForest         │ train  │   0.0846 │   0.0540 │   0.9867
+  RandomForest         │ val    │   0.0976 │   0.0633 │   0.9792
+  RandomForest         │ test   │   0.1042 │   0.0681 │   0.9798
+  ────────────────────────────────────────────────────────────
+  XGBoost              │ train  │   0.0980 │   0.0639 │   0.9821
+  XGBoost              │ val    │   0.0977 │   0.0633 │   0.9791
+  XGBoost              │ test   │   0.1044 │   0.0680 │   0.9797
+  ────────────────────────────────────────────────────────────
+  MLP                  │ train  │   0.1109 │   0.0744 │   0.9771
+  MLP                  │ val    │   0.1005 │   0.0681 │   0.9779
+  MLP                  │ test   │   0.1079 │   0.0733 │   0.9784
+  ────────────────────────────────────────────────────────────
+
+============================================================
+2. Combined Pred vs True Overlay
+============================================================
+
+  Saved: combined_pred_vs_true.png
+
+============================================================
+3. Mass-Binned Error Analysis
+============================================================
+
+  Saved: mass_binned_errors.png
+
+  Bin                  │  Count │ Ridge RMSE │    RF RMSE │   XGB RMSE
+  ─────────────────────────────────────────────────────────────────
+  [7.5, 9.0)           │   2954 │     0.8402 │     0.2441 │     0.2445
+  [9.0, 10.0)          │  13750 │     0.2397 │     0.0917 │     0.0908
+  [10.0, 10.5)         │   9319 │     0.3287 │     0.0635 │     0.0623
+  [10.5, 11.0)         │   4072 │     0.2266 │     0.0685 │     0.0677
+  [11.0, 11.5)         │   1739 │     0.2327 │     0.0565 │     0.0561
+  [11.5, 12.0)         │    623 │     0.2655 │     0.0485 │     0.0484
+  [12.0, 15.0)         │    310 │     0.5995 │     0.0424 │     0.1351
+
+============================================================
+4. Data Scaling Analysis
+============================================================
+
+  Ridge            frac=5%  n=  7,957  RMSE=0.3667  R²=0.7501
+  Ridge            frac=10%  n= 15,914  RMSE=0.3661  R²=0.7508
+  Ridge            frac=25%  n= 39,785  RMSE=0.3647  R²=0.7527
+  Ridge            frac=50%  n= 79,571  RMSE=0.3646  R²=0.7529
+  Ridge            frac=75%  n=119,357  RMSE=0.3645  R²=0.7531
+  Ridge            frac=100%  n=159,143  RMSE=0.3640  R²=0.7537
+
+  RandomForest     frac=5%  n=  7,957  RMSE=0.1094  R²=0.9777
+  RandomForest     frac=10%  n= 15,914  RMSE=0.1073  R²=0.9786
+  RandomForest     frac=25%  n= 39,785  RMSE=0.1063  R²=0.9790
+  RandomForest     frac=50%  n= 79,571  RMSE=0.1052  R²=0.9794
+  RandomForest     frac=75%  n=119,357  RMSE=0.1047  R²=0.9796
+  RandomForest     frac=100%  n=159,143  RMSE=0.1043  R²=0.9798
+
+  Saved: data_scaling.png
+
+============================================================
+5. Feature Importance Comparison
+============================================================
+
+  Saved: feature_importance_comparison.png
+
+  Feature              │    Ridge │       RF
+  ──────────────────────────────────────────
+  log_stellar_mass     │   0.2142 │   0.1664
+  log_gas_mass         │   0.0801 │   0.0026
+  vel_disp             │   0.6227 │   0.8052
+  sfr                  │   0.0225 │   0.0003
+  half_mass_rad        │   0.0546 │   0.0235
+  env_dist_5nn         │   0.0058 │   0.0021
+
+============================================================
+6. Physics Interpretation Summary
+============================================================
+
+  KEY FINDINGS:
+
+  1. Velocity dispersion (vel_disp) is overwhelmingly the
+     strongest predictor of halo mass (SHAP=0.53, RF imp=0.81).
+     This is physically expected: σ_v traces the virial mass
+     via M ∝ σ² R (virial theorem).
+
+  2. Stellar mass is the second-most important feature.
+     The stellar-to-halo mass relation (SHMR) is a well-known
+     astrophysical scaling relation, and our model recovers it.
+
+  3. Gas mass, SFR, and half-mass radius contribute marginally.
+     These track galaxy formation efficiency but add little
+     information beyond what σ_v and M_★ already encode.
+
+  4. Spatial positions (pos_x/y/z) have zero predictive power
+     (r ≈ 0.01 with target). This is correct: halo mass does
+     not depend on position in the simulation box.
+
+  5. Environment proxy (env_dist_5nn) has weak negative
+     correlation (-0.11): denser environments → higher masses.
+     This is the expected assembly bias signal.
+
+  6. Tree models (R²=0.98) substantially outperform linear
+     models (R²=0.75), confirming strong non-linear mappings
+     between baryonic features and halo mass. The MLP (R²=0.978)
+     matches but doesn't surpass trees — expected for tabular data.
+
+  7. Residual analysis shows larger errors at the extreme mass
+     ends (low-mass and cluster-scale halos), consistent with
+     known scatter in the SHMR at these regimes.
+
+  Total elapsed: 313.2s
+
+Step 8 complete. ✓
+All steps (1-8) of the Dark Halo pipeline are now complete.
